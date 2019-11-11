@@ -4,23 +4,17 @@ import PropTypes from 'prop-types';
 
 const List = (props) => {
     const { items, selectedItem, onClick } = props;
-    console.log(items);
+
     const handleItemClicked = (selectedItemId) => {
-        //console.log(selectedItem[selectedItemId]);
-        //console.log(selectedItem.hasOwnProperty(selectedItemId));
         if(selectedItem[selectedItemId]){
             //remove from parent
-            //console.log('delete '+selectedItemId);
             delete selectedItem[selectedItemId];
         } else {
             //not selected
             selectedItem[selectedItemId] = {};
-            //console.log(selectedItem[selectedItemId])
         }
         onClick(selectedItem);
-        //console.log(selectedItem)
     };
-
     const handleSubItemListChange = (itemId, subList) => {
         selectedItem[itemId] = subList;
         onClick(selectedItem);
