@@ -7,10 +7,9 @@ import Data from './Data/dummy_data'
 function App() {
     const [Menu] = useState(Data);
     const [selectedMenu, setSelectedMenu] = useState({});
-    console.log(selectedMenu);
+
     const addSelectedItem = (selectedItem) => {
         setSelectedMenu({...selectedMenu, selectedItem});
-        console.log(selectedMenu);
     };
 
   return (
