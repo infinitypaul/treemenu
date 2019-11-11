@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import List from "./Components/List";
+import Data from './Data/dummy_data'
+
 
 function App() {
+    const [Menu] = useState(Data);
+    const [selectedMenu, setSelectedMenu] = useState({});
+
+    const addSelectedItem = (selectedItem) => {
+        setSelectedMenu({...selectedMenu, selectedItem});
+    };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <div>
+            <h1>Tree Menu</h1>
+            <List
+                items={Menu}
+                onClick={(selectedItem) => addSelectedItem(selectedItem)}
+                selectedItem={selectedMenu}
+            />
+        </div>
     </div>
   );
 }
